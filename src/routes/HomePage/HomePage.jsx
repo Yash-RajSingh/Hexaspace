@@ -1,4 +1,4 @@
-import Landing from "../../components/landing/landing";
+import Landing from "../../components/landing/Landing";
 import Layout from "../../components/layout/Layout";
 
 const HomePage = () => {
