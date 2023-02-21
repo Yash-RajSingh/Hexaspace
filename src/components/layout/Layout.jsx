@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Header from "../header/Header";
-import Preloader from "../preloader/preloader";
+import Preloader from "../preloader/Preloader";
 const Pseudobody = styled.div`
   width: 95%;
   border: 1px solid white;
