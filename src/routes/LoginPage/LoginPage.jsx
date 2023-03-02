@@ -1,7 +1,9 @@
+import Login from "../../components/login/Login";
+
 const LoginPage = () => {
   return ( 
     <>
-    hello
+      <Login />
     </>
    );
 }

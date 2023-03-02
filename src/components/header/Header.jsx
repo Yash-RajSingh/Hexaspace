@@ -4,12 +4,23 @@ import HexaLogo from '../../assets/logo.png'
 import ProfileLogo from '../../assets/profile.png'
 import { useContext } from "react";
 import { AuthContext } from "../../context/context";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const Header = () => {
-  const {auth, setAuth} = useContext(AuthContext)
+  const {auth, setAuth} = useContext(AuthContext);
+  const [showHeader, setShowHeader] = useState(true);
+
+  const navigate = useNavigate();
+  useEffect(()=>{
+    if (window.location.href.includes('/login')){
+      setShowHeader(false)
+    }
+  }, [window.location.href])
   return (
     <>
-      <HeaderContainer>
+      <HeaderContainer style={{display: showHeader ? "block" : "none"}}>
         <HeaderWrapper>
           <SubHeaderContainer gap={"5%"}>
             <Headermage src={HexaLogo} />
@@ -27,7 +38,7 @@ const Header = () => {
             {auth ? 
             <ProfileImage src={ProfileLogo} />
             : 
-            <Button size={"7rem"} color>Login</Button>
+            <Button size={"7rem"} color onClick={()=> navigate('/login')}>Login</Button>
           }
           </SubHeaderContainer>
         </HeaderWrapper>

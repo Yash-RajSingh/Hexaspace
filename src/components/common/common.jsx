@@ -6,8 +6,8 @@ export const Button = styled.button`
     props.color ? "var(--light-orange)" : "transparent"};
   color: var(--white);
   width: ${(props) => (props.size ? props.size : "100%")};
-  border: 0.25px solid;
-  border-color: ${(props) => (props.color ? "white" : "var(--light-orange)")};
+  border-color: ${(props) =>
+    props.color ? "#ffffff6a" : "var(--light-orange)"};
   padding: 0.375rem 0.75rem;
   text-align: center;
   position: relative;
@@ -22,7 +22,7 @@ export const Button = styled.button`
   line-height: 1.5rem;
   letter-spacing: 1px;
   font-size: 1.125rem;
-  &:hover{
+  &:hover {
     background: var(--dark-orange);
     border-color: var(--white);
   }
@@ -30,3 +30,6 @@ export const Button = styled.button`
 `;
 
 
+export const Spacer = styled.div`
+  margin-top: ${(props) => props.top};
+`;
