@@ -56,7 +56,10 @@ export const LoginHeading = styled.p`
   font-size: 1.25rem;
   /* float: right; */
   /* margin-left: auto; */
-  text-align: right;
+  position: absolute;
+  top: 1.5%;
+  right: 6%;
+  z-index: 2;
   letter-spacing: 1px;
 `;
 

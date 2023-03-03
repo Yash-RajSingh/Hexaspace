@@ -7,9 +7,10 @@ import { AuthContext } from "../../context/context";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
+import { auth } from "../../firebaseUtils";
 
 const Header = () => {
-  const {auth, setAuth} = useContext(AuthContext);
+  const { authState, setAuthState } = useContext(AuthContext);
   const [showHeader, setShowHeader] = useState(true);
 
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const Header = () => {
   }, [window.location.href])
   return (
     <>
-      <HeaderContainer style={{display: showHeader ? "block" : "none"}}>
+      <HeaderContainer style={{ display: showHeader ? "block" : "none" }}>
         <HeaderWrapper>
           <SubHeaderContainer gap={"5%"}>
             <Headermage src={HexaLogo} />
@@ -35,11 +36,15 @@ const Header = () => {
             <NavButton>Explore</NavButton>
           </SubHeaderContainer>
           <SubHeaderContainer style={{ justifyContent: "flex-end" }}>
-            {auth ? 
-            <ProfileImage src={ProfileLogo} />
-            : 
-            <Button size={"7rem"} color onClick={()=> navigate('/login')}>Login</Button>
-          }
+            {authState ? (
+              <ProfileImage
+                src={auth.currentUser.photoURL || ProfileLogo}
+              />
+            ) : (
+              <Button size={"7rem"} color onClick={() => navigate("/login")}>
+                Login
+              </Button>
+            )}
           </SubHeaderContainer>
         </HeaderWrapper>
       </HeaderContainer>

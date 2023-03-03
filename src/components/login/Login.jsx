@@ -16,24 +16,39 @@ import {
   SeparatorText,
   SeparatorWrapper,
   SubLoginWrapper,
-} from "./LoaginElements";
+} from "./LoginElements";
 import Google from "../../assets/google.png";
 import { Button, Spacer } from "../common/common";
 import { useState } from "react";
 import Back from "../../assets/up.png";
 import { useNavigate } from "react-router-dom";
+import { handleGoogleLogin } from "../../hooks/firebaseHooks";
+import { useRef } from "react";
+import {
+  handleLoginValidation,
+  handleSigninValidation,
+} from "../../hooks/validation";
+import { useContext } from "react";
+import { AuthContext } from "../../context/context";
 const Login = () => {
+  const { authState, setAuthState } = useContext(AuthContext);
   const [showSignup, setShowSignup] = useState(true);
-  let navigate = useNavigate()
+  let navigate = useNavigate();
+  const signinUsernameRef = useRef();
+  const signinEmailRef = useRef();
+  const signinPasswordRef = useRef();
+  const signinConfirmPasswordRef = useRef();
+  const loginEmailRef = useRef();
+  const loginPasswordRef = useRef();
   return (
     <>
       <LoginContainer>
         {/* <BackButton>{"<"} </BackButton> */}
-        <BackButton src={Back} onClick={()=> navigate('/')} />
+        <BackButton src={Back} onClick={() => navigate("/")} />
+        <LoginHeading>HexaSpace</LoginHeading>
         <LoginPseudobody>
           <LoginImageContainer></LoginImageContainer>
           <LoginWrapper>
-            <LoginHeading>HexaSpace</LoginHeading>
             <LoginViewWindow>
               {/* Login form  */}
               <SubLoginWrapper
@@ -48,13 +63,30 @@ const Login = () => {
                     Signup
                   </ClickableText>
                 </LoginTitle>
-                <Spacer top="7%"/>
-                <InputLabel >Email : </InputLabel>
-                <InputField placeholder="you@example.com" />
+                <Spacer top="7%" />
+                <InputLabel>Email : </InputLabel>
+                <InputField placeholder="you@example.com" ref={loginEmailRef} />
                 <InputLabel>Password: </InputLabel>
-                <InputField placeholder="Enter 6 characters or more" />
+                <InputField
+                  placeholder="Enter 6 characters or more"
+                  ref={loginPasswordRef}
+                />
                 <div style={{ textAlign: "center" }}>
-                  <Button size={"14rem"} color>
+                  <Button
+                    size={"14rem"}
+                    color
+                    onClick={async () => {
+                      var request = await handleLoginValidation(
+                        loginEmailRef.current.value,
+                        loginPasswordRef.current.value
+                      );
+                      if (request && request.status == 200) {
+                        setAuthState(request.auth);
+                        navigate("/");
+                      }
+                      console.log(request);
+                    }}
+                  >
                     Login
                   </Button>
                 </div>
@@ -63,39 +95,89 @@ const Login = () => {
                   <SeparatorText>OR</SeparatorText>
                   <SeparatorLine> </SeparatorLine>
                 </SeparatorWrapper>
-                <GoogleBtn>
+                <GoogleBtn
+                  onClick={async () => {
+                    var request = await handleGoogleLogin();
+                    if (request && request.status == 200) {
+                      setAuthState(request.auth);
+
+                      navigate("/");
+                    }
+                    console.log(request);
+                  }}
+                >
                   <BtnIcon src={Google} />
                   Login With Google
                 </GoogleBtn>
               </SubLoginWrapper>
               {/* Signup form  */}
               <SubLoginWrapper>
-                <LoginTitle>
-                  Already have an account? {"  "}
-                  <ClickableText onClick={() => setShowSignup(!showSignup)}>
-                    Login
-                  </ClickableText>
-                </LoginTitle>
+                <LoginTitle>Create Account</LoginTitle>
+                <InputLabel>Username : </InputLabel>
+                <InputField placeholder="username" ref={signinUsernameRef} />
                 <InputLabel>Email : </InputLabel>
-                <InputField placeholder="you@example.com" />
+                <InputField
+                  placeholder="you@example.com"
+                  ref={signinEmailRef}
+                />
                 <InputLabel>Password: </InputLabel>
-                <InputField placeholder="Enter 6 characters or more" />
+                <InputField
+                  placeholder="Enter 6 characters or more"
+                  ref={signinPasswordRef}
+                />
                 <InputLabel>Confirm password: </InputLabel>
-                <InputField placeholder="Re-enter password" />
-                <div style={{ textAlign: "center" }}>
-                  <Button size={"14rem"} color>
+                <InputField
+                  placeholder="Re-enter password"
+                  ref={signinConfirmPasswordRef}
+                />
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Button
+                    size={"14rem"}
+                    color
+                    onClick={async () => {
+                      var request = await handleSigninValidation(
+                        signinUsernameRef.current.value,
+                        signinEmailRef.current.value,
+                        signinPasswordRef.current.value,
+                        signinConfirmPasswordRef.current.value
+                      );
+                      if (request && request.status == 200) {
+                        setShowSignup(!showSignup);
+                      }
+                      console.log(request);
+                    }}
+                  >
                     Signup
                   </Button>
+                  <GoogleBtn
+                    onClick={async () => {
+                      var request = await handleGoogleLogin();
+                      console.log(request);
+                      if (request && request.status == 200) {
+                        setAuthState(request.auth);
+                        navigate("/");
+                      }
+                    }}
+                  >
+                    <BtnIcon src={Google} />
+                    Google signup
+                  </GoogleBtn>
                 </div>
-                <SeparatorWrapper>
+                {/* <SeparatorWrapper>
                   <SeparatorLine></SeparatorLine>
                   <SeparatorText>OR</SeparatorText>
                   <SeparatorLine> </SeparatorLine>
                 </SeparatorWrapper>
-                <GoogleBtn>
+                <GoogleBtn onClick={handleGoogleLogin}>
                   <BtnIcon src={Google} />
                   Signup With Google
-                </GoogleBtn>
+                </GoogleBtn> */}
               </SubLoginWrapper>
             </LoginViewWindow>
           </LoginWrapper>
