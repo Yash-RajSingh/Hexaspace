@@ -76,4 +76,5 @@ export const NavButton = styled.p`
 
 export const ProfileImage = styled.img`
   width: 3rem;
+  border-radius: 50%;
 `

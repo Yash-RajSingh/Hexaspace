@@ -37,9 +37,7 @@ const Header = () => {
           </SubHeaderContainer>
           <SubHeaderContainer style={{ justifyContent: "flex-end" }}>
             {authState ? (
-              <ProfileImage
-                src={auth.currentUser.photoURL || ProfileLogo}
-              />
+              <ProfileImage src={`${authState?.profilePhoto}` || ProfileLogo} />
             ) : (
               <Button size={"7rem"} color onClick={() => navigate("/login")}>
                 Login
