@@ -19,6 +19,21 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     box-sizing: border-box;
   }
+  /*---------Custom Scrollbar Styling---------*/
+::-webkit-scrollbar {
+  width: 0.5vw;
+  background: transparent;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--dark-orange);
+  border: 0.5px solid black;
+  background-clip: padding-box;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--light-orange);
+}
 `;
 
 export default GlobalStyles;

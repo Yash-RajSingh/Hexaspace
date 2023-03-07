@@ -32,7 +32,7 @@ const Header = () => {
             style={{ justifyContent: "space-evenly" }}
           >
             <NavButton>Home</NavButton>
-            <NavButton>Sell</NavButton>
+            <NavButton onClick={() => navigate("/sell")}>Sell</NavButton>
             <NavButton>Explore</NavButton>
           </SubHeaderContainer>
           <SubHeaderContainer style={{ justifyContent: "flex-end" }}>

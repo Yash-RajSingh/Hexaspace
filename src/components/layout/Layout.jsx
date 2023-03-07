@@ -3,7 +3,7 @@ import Header from "../header/Header";
 import Preloader from "../preloader/Preloader";
 const Pseudobody = styled.div`
   width: 95%;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   margin: 1% auto;
 `;
 const Layout = (props) => {
