@@ -28,7 +28,7 @@ export const handleGoogleLogin = async () => {
       name: auth.currentUser.displayName,
       email: auth.currentUser.email,
       profilePhoto: auth.currentUser.photoURL,
-      isArtist: false
+      walletAmount: 0
     };
     if (queryResponse.docs.length === 0) {
       const res = await addDoc(collection(firebaseDatabase, "users"), userData);
@@ -71,7 +71,7 @@ export const handleSignUpWithEmail = async (username, email, password) => {
       uid: auth.currentUser.uid,
       name: username,
       email: email,
-      isArtist: false
+      walletAmount: 0,
     };
     // alert("Successfully Signed Up!");
     const queryResponse = await addDoc(

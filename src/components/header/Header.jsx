@@ -31,7 +31,7 @@ const Header = () => {
             gap={"10%"}
             style={{ justifyContent: "space-evenly" }}
           >
-            <NavButton>Home</NavButton>
+            <NavButton onClick={() => navigate("/")}>Home</NavButton>
             <NavButton onClick={() => navigate("/sell")}>Sell</NavButton>
             <NavButton>Explore</NavButton>
           </SubHeaderContainer>

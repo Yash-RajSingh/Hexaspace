@@ -8,7 +8,22 @@ import {
   LandingInfoText,
 } from "./LandingElements";
 import MoonImage from '../../assets/planet.png'
+import { collection, getDocs } from "firebase/firestore";
+import { firebaseDatabase } from "../../firebaseUtils";
+import { useEffect,useContext } from "react";
+import { NftCollectionContext, UpdateContext } from "../../context/context";
 const Landing = () => {
+  const { nftCollection, setNftCollection} = useContext(NftCollectionContext)
+  const { update, setUpdate} = useContext(UpdateContext)
+  useEffect(()=>{
+    (async()=>{
+      const collectionData = await getDocs(collection(firebaseDatabase, `${import.meta.env.VITE_APP_FB_COLLECTION_NAME}`));
+      const filteredCollectionData = collectionData.docs.map((doc) => ({...doc.data(),nft_id: doc.id,}));
+      // const output = new Date(filteredCollectionData[0].createdAt.seconds * 1000);
+      setNftCollection(filteredCollectionData);
+    })()
+
+  },[update])
   return (
     <>
       <LandingContainer>

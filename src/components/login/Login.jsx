@@ -22,7 +22,7 @@ import { Button, Spacer } from "../common/common";
 import { useState } from "react";
 import Back from "../../assets/up.png";
 import { useNavigate } from "react-router-dom";
-import { handleGoogleLogin } from "../../hooks/firebaseHooks";
+import { handleGoogleLogin } from "../../hooks/firebaseAuthenticationHooks";
 import { useRef } from "react";
 import {
   handleLoginValidation,
@@ -100,7 +100,7 @@ const Login = () => {
                     var request = await handleGoogleLogin();
                     if (request && request.status == 200) {
                       setAuthState(request.auth);
-
+                      sessionStorage.setItem("authStatus", true);
                       navigate("/");
                     }
                     console.log(request);
@@ -161,6 +161,7 @@ const Login = () => {
                       console.log(request);
                       if (request && request.status == 200) {
                         setAuthState(request.auth);
+                        sessionStorage.setItem("authStatus", true);
                         navigate("/");
                       }
                     }}
