@@ -72,6 +72,8 @@ const Header = () => {
                         deleteCookie({ name: "userEmail" });
                         deleteCookie({ name: "userPhoto" });
                         setAuthState(false);
+                        setIsLoggedIn(false)
+                        navigate('/')
                       }}
                     >
                       Logout

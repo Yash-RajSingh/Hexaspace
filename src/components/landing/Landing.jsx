@@ -7,22 +7,20 @@ import {
   OrangeText,
   LandingInfoText,
 } from "./LandingElements";
-import MoonImage from '../../assets/planet.png'
-import { collection, getDocs } from "firebase/firestore";
-import { firebaseDatabase } from "../../firebaseUtils";
-import { useEffect,useContext } from "react";
+import MoonImage from "../../assets/planet.png";
+import { useEffect, useContext } from "react";
 import { NftCollectionContext, UpdateContext } from "../../context/context";
+import getNFTs from "../../hooks/getNFTs";
 const Landing = () => {
-  const { nftCollection, setNftCollection} = useContext(NftCollectionContext)
-  const { update, setUpdate} = useContext(UpdateContext)
-  useEffect(()=>{
-    (async()=>{
-      const collectionData = await getDocs(collection(firebaseDatabase, `${import.meta.env.VITE_APP_FB_COLLECTION_NAME}`));
-      const filteredCollectionData = collectionData.docs.map((doc) => ({...doc.data(),nft_id: doc.id,}));
-      // const output = new Date(filteredCollectionData[0].createdAt.seconds * 1000);
-      setNftCollection(filteredCollectionData);
-    })()
-  },[update])
+  const { nftCollection, setNftCollection } = useContext(NftCollectionContext);
+  const { update, setUpdate } = useContext(UpdateContext);
+  useEffect(() => {
+    (async () => {
+      const NftData = await getNFTs();
+      setNftCollection(NftData);
+      //   // const output = new Date(filteredCollectionData[0].createdAt.seconds * 1000);
+    })();
+  }, [update]);
   return (
     <>
       <LandingContainer>
@@ -45,6 +43,6 @@ const Landing = () => {
       </LandingContainer>
     </>
   );
-}
- 
+};
+
 export default Landing;

@@ -90,6 +90,7 @@ export const PopupBody = styled.div`
   margin-top: 0.7rem;
   position: absolute;
   right: 2%;
+  z-index: 2;
 `;
 export const ArrowUp = styled.div`
   min-width: 2px;
@@ -117,4 +118,6 @@ export const PopupOptions = styled.p`
   }
 `;
 
-export const PopUp = styled.div``
+export const PopUp = styled.div`
+  z-index: 2;
+`
