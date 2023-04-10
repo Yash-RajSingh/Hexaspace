@@ -30,6 +30,7 @@ export const handleGoogleLogin = async () => {
       profilePhoto:
         auth.currentUser.photoURL || getCookies({ name: "userPhoto" }),
       walletAmount: 0,
+      isArtist: false
     };
     if (queryResponse.docs.length === 0) {
       const res = await addDoc(collection(firebaseDatabase, "users"), userData);
@@ -72,6 +73,7 @@ export const handleSignUpWithEmail = async (username, email, password) => {
       name: username,
       email: email,
       walletAmount: 0,
+      isArtist: false,
     };
     // alert("Successfully Signed Up!");
     const queryResponse = await addDoc(
