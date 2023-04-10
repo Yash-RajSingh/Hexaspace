@@ -1,24 +1,41 @@
-import { HeaderContainer, Headermage, HeaderTitle, HeaderWrapper, NavButton, ProfileImage, SubHeaderContainer } from "./HeaderElements";
-import {Button} from '../common/common'
-import HexaLogo from '../../assets/logo.png'
-import ProfileLogo from '../../assets/profile.png'
+import {
+  ArrowUp,
+  HeaderContainer,
+  Headermage,
+  HeaderProfileContainer,
+  HeaderTitle,
+  HeaderWrapper,
+  NavButton,
+  PopUp,
+  PopupBody,
+  PopupOptions,
+  ProfileImage,
+  SubHeaderContainer,
+} from "./HeaderElements";
+import { Button } from "../common/common";
+import HexaLogo from "../../assets/logo.png";
+import ProfileLogo from "../../assets/profile.png";
 import { useContext } from "react";
 import { AuthContext } from "../../context/context";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import { auth } from "../../firebaseUtils";
+import { deleteCookie, getCookies } from "../../hooks/cookies";
+import { logout } from "../../hooks/firebaseAuthenticationHooks";
 
 const Header = () => {
   const { authState, setAuthState } = useContext(AuthContext);
   const [showHeader, setShowHeader] = useState(true);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
   const navigate = useNavigate();
-  useEffect(()=>{
-    if (window.location.href.includes('/login')){
-      setShowHeader(false)
+  useEffect(() => {
+    if (window.location.href.includes("/login")) {
+      setShowHeader(false);
     }
-  }, [window.location.href])
+    setIsLoggedIn(auth?.currentUser?.photoURL || getCookies({ name: "userPhoto" }));
+  }, [window.location.href]);
   return (
     <>
       <HeaderContainer style={{ display: showHeader ? "block" : "none" }}>
@@ -33,11 +50,35 @@ const Header = () => {
           >
             <NavButton onClick={() => navigate("/")}>Home</NavButton>
             <NavButton onClick={() => navigate("/sell")}>Sell</NavButton>
-            <NavButton>Explore</NavButton>
+            <NavButton onClick={() => navigate("/explore")}>Explore</NavButton>
           </SubHeaderContainer>
           <SubHeaderContainer style={{ justifyContent: "flex-end" }}>
-            {authState ? (
-              <ProfileImage src={`${authState?.profilePhoto}` || ProfileLogo} />
+            {isLoggedIn ? (
+              <HeaderProfileContainer>
+                <ProfileImage
+                  src={`${isLoggedIn}` || ProfileLogo}
+                  onClick={() => setShowOptions(!showOptions)}
+                />
+                <PopUp style={{ display: showOptions ? "" : "none" }}>
+                  <PopupBody>
+                    <ArrowUp></ArrowUp>
+                    <PopupOptions>Profile</PopupOptions>
+                    <hr style={{ opacity: 0.5 }} />
+                    <PopupOptions
+                      onClick={() => {
+                        logout();
+                        deleteCookie({ name: "userUid" });
+                        deleteCookie({ name: "userName" });
+                        deleteCookie({ name: "userEmail" });
+                        deleteCookie({ name: "userPhoto" });
+                        setAuthState(false);
+                      }}
+                    >
+                      Logout
+                    </PopupOptions>
+                  </PopupBody>
+                </PopUp>
+              </HeaderProfileContainer>
             ) : (
               <Button size={"7rem"} color onClick={() => navigate("/login")}>
                 Login
@@ -48,6 +89,6 @@ const Header = () => {
       </HeaderContainer>
     </>
   );
-}
- 
+};
+
 export default Header;

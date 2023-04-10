@@ -22,7 +22,6 @@ const Landing = () => {
       // const output = new Date(filteredCollectionData[0].createdAt.seconds * 1000);
       setNftCollection(filteredCollectionData);
     })()
-
   },[update])
   return (
     <>

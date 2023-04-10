@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HeaderContainer = styled.div`
   /* border: 1px solid white; */
   margin-top: 0.35rem;
-`
+`;
 
 export const HeaderWrapper = styled.div`
   width: 95%;
@@ -11,26 +11,26 @@ export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`
+`;
 
 export const Headermage = styled.img`
   width: 2.5rem;
-`
+`;
 export const HeaderTitle = styled.h1`
   color: var(--light-orange);
   font-size: 2.5rem;
-  font-family: 'Joan';
+  font-family: "Joan";
   letter-spacing: 1px;
-`
+`;
 
 export const SubHeaderContainer = styled.div`
   width: max-content;
   display: flex;
   align-items: center;
-  gap: ${props => props.gap};
+  gap: ${(props) => props.gap};
   width: 33%;
   /* border: 1px solid white; */
-`
+`;
 export const NavButton = styled.p`
   font-family: "Joan";
   color: white;
@@ -75,6 +75,46 @@ export const NavButton = styled.p`
 `;
 
 export const ProfileImage = styled.img`
-  width: 3rem;
+  width: 2.5rem;
   border-radius: 50%;
-`
+  cursor: pointer;
+`;
+
+export const HeaderProfileContainer = styled.div`
+  /* border: 1px solid white; */
+  text-align: right;
+`;
+export const PopupBody = styled.div`
+  background: var(--white);
+  padding: 0.25rem;
+  margin-top: 0.7rem;
+  position: absolute;
+  right: 2%;
+`;
+export const ArrowUp = styled.div`
+  min-width: 2px;
+  max-width: 1.5rem;
+  min-height: 10px;
+  margin-top: -9px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: var(--white);
+  margin-left: auto;
+  margin-right: 15%;
+`;
+export const PopupOptions = styled.p`
+  padding: 0.5rem 1rem;
+  text-align: left;
+  color: #6e6e6ed0;
+  /* color: var(--light-orange); */
+  font-family: 'Joan';
+  font-weight: 600;
+  letter-spacing: 2px;
+  transition: all 500ms;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover{
+    background: #cbcbcbd0;
+  }
+`;
+
+export const PopUp = styled.div``

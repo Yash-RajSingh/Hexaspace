@@ -35,10 +35,10 @@ const Slider = () => {
             modifier: 1,
             slideShadows: false,
           }}
-          // autoplay={{
-          //   delay: 2500,
-          //   disableOnInteraction: true,
-          // }}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
           modules={[EffectCoverflow, Autoplay]}
           spaceBetween={100}
           className="mySwiper"

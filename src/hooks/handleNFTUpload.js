@@ -2,9 +2,10 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { firebaseDatabase, firebaseStorage } from "../firebaseUtils";
 import { v4 } from "uuid";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { getCookies } from "./cookies";
 
 const handleNFTUpload = async (name, file, currency, price, creatorId, creatorName) => {
-  const authStatus = sessionStorage.getItem("authStatus")
+  const authStatus = getCookies({name: "userUid"})
   if (name === "" || file === null || currency === "" || price === "") {
     alert("Fill all the fields");
     return;
@@ -39,6 +40,7 @@ const handleNFTUpload = async (name, file, currency, price, creatorId, creatorNa
   };
   try {
     const AddNftRecord = await addDoc(NftCollectionRef, NftDoc)
+    console.log(AddNftRecord)
     return AddNftRecord
   } catch (err){
     alert("Error uploading Nft", err)

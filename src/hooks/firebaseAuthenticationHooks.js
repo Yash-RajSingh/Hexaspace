@@ -13,7 +13,7 @@ import {
   addDoc,
   getDoc,
 } from "firebase/firestore";
-import { createCookie } from "./cookies";
+import { createCookie, getCookies } from "./cookies";
 export const handleGoogleLogin = async () => {
   try {
     const request = await signInWithPopup(auth, GoogleProvider);
@@ -24,16 +24,16 @@ export const handleGoogleLogin = async () => {
     );
     const queryResponse = await getDocs(firebaseQuery);
     const userData = {
-      uid: auth.currentUser.uid,
-      name: auth.currentUser.displayName,
-      email: auth.currentUser.email,
-      profilePhoto: auth.currentUser.photoURL,
-      walletAmount: 0
+      uid: auth.currentUser.uid || getCookies({ name: "userUid" }),
+      name: auth.currentUser.displayName || getCookies({ name: "userName" }),
+      email: auth.currentUser.email || getCookies({ name: "userEmail" }),
+      profilePhoto:
+        auth.currentUser.photoURL || getCookies({ name: "userPhoto" }),
+      walletAmount: 0,
     };
     if (queryResponse.docs.length === 0) {
       const res = await addDoc(collection(firebaseDatabase, "users"), userData);
     } else {
-      
       queryResponse.docs.forEach((item) => {
         const dataItem = item.data();
         createCookie({ name: "userName", value: dataItem.name, validDays: 7 });
@@ -54,7 +54,7 @@ export const handleGoogleLogin = async () => {
     var respone = {
       message: "User logged in successfully",
       status: 200,
-      auth: userData
+      auth: userData,
     };
     return respone;
   } catch (error) {
@@ -68,7 +68,7 @@ export const handleSignUpWithEmail = async (username, email, password) => {
     const request = await createUserWithEmailAndPassword(auth, email, password);
     const user = request.user;
     const userData = {
-      uid: auth.currentUser.uid,
+      uid: auth.currentUser.uid || getCookies({ name: "userUid" }),
       name: username,
       email: email,
       walletAmount: 0,
@@ -105,7 +105,7 @@ export const handleLoginWithEmail = async (email, password) => {
       where("uid", "==", user.uid)
     );
     const queryResponse = await getDocs(firebaseQuery);
-    var dataItem
+    var dataItem;
     queryResponse.docs.forEach((item) => {
       dataItem = item.data();
       // console.log(dataItem);
@@ -121,7 +121,7 @@ export const handleLoginWithEmail = async (email, password) => {
     var respone = {
       message: "User logged in successfully",
       status: 200,
-      auth: dataItem
+      auth: dataItem,
     };
     return respone;
   } catch (error) {

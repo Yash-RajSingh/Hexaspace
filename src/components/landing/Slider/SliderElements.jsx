@@ -39,7 +39,7 @@ export const NftName = styled.p`
   font-size: 1rem;
   line-height: 1.2;
   letter-spacing: 1px;
-  font-family: "Joan";
+  font-family: "Tilt Warp";
   text-align:center;
 `;
 

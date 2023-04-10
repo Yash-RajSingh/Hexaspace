@@ -23,10 +23,11 @@ import {
 import Draw from "../../assets/draw.png";
 import Upload2 from "../../assets/upload2.png";
 import { useContext } from "react";
-import { AuthContext } from "../../context/context";
+import { AuthContext, UpdateContext } from "../../context/context";
 
 const UploadNFT = () => {
-  const { authState, setAuthState } = useContext(AuthContext);  
+  const { authState, setAuthState } = useContext(AuthContext);
+  const { update, setUpdate } = useContext(UpdateContext);
   const FileRef = useRef();
   const FileNameRef = useRef();
   const CurrencyRef = useRef();
@@ -64,31 +65,41 @@ const UploadNFT = () => {
               </CurrencySelectWrapper>
               <CurrencySelectWrapper>
                 <UploadInputLabel>NFT Price</UploadInputLabel>
-                <UploadInputField placeholder="Price your NFT" type="number" ref={PriceRef} />
+                <UploadInputField
+                  placeholder="Price your NFT"
+                  type="number"
+                  ref={PriceRef}
+                />
               </CurrencySelectWrapper>
             </CurrencyWrapper>
             <ButtonWrapper>
-              <SubmitButton color top={"2%"} size={"50%"} onClick={async(e)=>{
-
-                const request = await handleNFTUpload(
-                  FileNameRef.current.value,
-                  image,
-                  CurrencyRef.current.value,
-                  PriceRef.current.value,
-                  authState.uid,
-                  authState.name
-                ).then(()=>{
-                  alert("NFT up for sale");
-                  FileNameRef.current.value = ''
-                  CurrencyRef.current.value=''
-                  PriceRef.current.value=''
-                  FileRef.current.value=''
-                  setImage(null)
-                }).catch((err)=>{
-                  alert("Error posting NFT",err)
-                })
-                console.log(request);
-              }}>  
+              <SubmitButton
+                color
+                top={"2%"}
+                size={"50%"}
+                onClick={async (e) => {
+                  const request = await handleNFTUpload(
+                    FileNameRef.current.value,
+                    image,
+                    CurrencyRef.current.value,
+                    PriceRef.current.value,
+                    authState.uid,
+                    authState.name
+                  )
+                    .then(() => {
+                      alert("NFT up for sale");
+                      FileNameRef.current.value = "";
+                      CurrencyRef.current.value = "";
+                      PriceRef.current.value = "";
+                      FileRef.current.value = "";
+                      setImage(null);
+                      setUpdate(!update);
+                    })
+                    .catch((err) => {
+                      alert("Error posting NFT", err);
+                    });
+                }}
+              >
                 Put for sale
               </SubmitButton>
             </ButtonWrapper>

@@ -10,6 +10,7 @@ import HomePage from "./HomePage/HomePage";
 import LoginPage from "./LoginPage/LoginPage";
 import UploadNFTPage from "./UploadNFTPage/UploadNFTPage";
 import "swiper/swiper.css";
+import ExplorePage from "./ExplorePage/ExplorePage";
 const App = () => {
   const [authState, setAuthState] = useState(false);
   const [update, setUpdate] = useState(false);
@@ -25,6 +26,7 @@ const App = () => {
                 <Route exact path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/sell" element={<UploadNFTPage />} />
+                <Route path="/explore" element={<ExplorePage />} />
               </Routes>
             </Router>
           </NftCollectionContext.Provider>

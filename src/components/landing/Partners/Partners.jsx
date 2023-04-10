@@ -12,10 +12,10 @@ const Partners = () => {
     <>
       <PartnersTitle>Our Partners</PartnersTitle>
       <PartnerContainer>
-        {PartnersData.map((item) => {
+        {PartnersData.map((item, index) => {
           return (
             <>
-              <PartnerItem>
+              <PartnerItem key={"partner"+index}>
                 <PartnerIcon src={item.src} />
                 <PartnerName>{item.name}</PartnerName>
               </PartnerItem>
