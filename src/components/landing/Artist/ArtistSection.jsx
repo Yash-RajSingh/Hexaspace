@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import getAllArtists from "../../../hooks/getAllArtists";
 import { PartnersTitle } from "../Partners/PartnersElements";
 import ArtistCard from "./ArtistCard";
+import { UpdateContext } from "../../../context/context";
 
 const ArtistContainer = styled.div`
   /* border: 1px solid white; */
@@ -39,6 +40,7 @@ const ExploreButton = styled.div`
 `
 const ArtistSection = () => {
   const [artistData, setArtistData] = useState(false)
+  const {update, setUpdate} = useContext(UpdateContext)
   useEffect(()=>{
     (async () => {
       const Data = await getAllArtists();
@@ -47,7 +49,7 @@ const ArtistSection = () => {
       })
       setArtistData(ArtistData)
     })();
-  },[])
+  },[update])
   return ( 
     <>
     <ArtistContainer>
