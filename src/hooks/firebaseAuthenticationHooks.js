@@ -12,6 +12,8 @@ import {
   where,
   addDoc,
   getDoc,
+  doc,
+  updateDoc,
 } from "firebase/firestore";
 import { createCookie, getCookies } from "./cookies";
 export const handleGoogleLogin = async () => {
@@ -19,7 +21,7 @@ export const handleGoogleLogin = async () => {
     const request = await signInWithPopup(auth, GoogleProvider);
     const user = request.user;
     const firebaseQuery = query(
-      collection(firebaseDatabase, "users"),
+      collection(firebaseDatabase, `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`),
       where("uid", "==", user.uid)
     );
     const queryResponse = await getDocs(firebaseQuery);
@@ -30,13 +32,21 @@ export const handleGoogleLogin = async () => {
       profilePhoto:
         auth.currentUser.photoURL || getCookies({ name: "userPhoto" }),
       walletAmount: 0,
-      isArtist: false
+      isArtist: false,
+      artworkCount: 0
     };
     if (queryResponse.docs.length === 0) {
-      const res = await addDoc(collection(firebaseDatabase, "users"), userData);
+      const res = await addDoc(collection(firebaseDatabase, `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`), userData);
+      const documentId = res.id;
+      const docRef = await doc(firebaseDatabase, `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`, documentId);
+      await updateDoc(docRef, {
+        docId: documentId,
+      });
+      Object.assign(userData, { docId: documentId });
     } else {
       queryResponse.docs.forEach((item) => {
         const dataItem = item.data();
+        Object.assign(userData, { docId: dataItem.docId });
         createCookie({ name: "userName", value: dataItem.name, validDays: 7 });
         createCookie({
           name: "userEmail",
@@ -51,7 +61,7 @@ export const handleGoogleLogin = async () => {
         });
       });
     }
-    // alert("Successfully Signed Up!");
+
     var respone = {
       message: "User logged in successfully",
       status: 200,
@@ -74,12 +84,19 @@ export const handleSignUpWithEmail = async (username, email, password) => {
       email: email,
       walletAmount: 0,
       isArtist: false,
+      artworkCount: 0,
     };
-    // alert("Successfully Signed Up!");
+    alert("Successfully Signed Up!");
     const queryResponse = await addDoc(
-      collection(firebaseDatabase, "users"),
+      collection(firebaseDatabase, `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`),
       userData
     );
+    const documentId = queryResponse.id;
+    const docRef = await doc(firebaseDatabase, `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`, documentId);
+    await updateDoc(docRef, {
+      docId: documentId,
+    });
+
     createCookie({ name: "userName", value: username, validDays: 7 });
     createCookie({
       name: "userEmail",
@@ -103,7 +120,7 @@ export const handleLoginWithEmail = async (email, password) => {
     // console.log(request.user);
     const user = request.user;
     const firebaseQuery = query(
-      collection(firebaseDatabase, "users"),
+      collection(firebaseDatabase, `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`),
       where("uid", "==", user.uid)
     );
     const queryResponse = await getDocs(firebaseQuery);

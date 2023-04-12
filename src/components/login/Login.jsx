@@ -84,7 +84,7 @@ const Login = () => {
                         setAuthState(request.auth);
                         navigate("/");
                       }
-                      console.log(request);
+                      // console.log(request);
                     }}
                   >
                     Login
@@ -103,7 +103,6 @@ const Login = () => {
                       sessionStorage.setItem("authStatus", true);
                       navigate("/");
                     }
-                    console.log(request);
                   }}
                 >
                   <BtnIcon src={Google} />
@@ -150,7 +149,6 @@ const Login = () => {
                       if (request && request.status == 200) {
                         setShowSignup(!showSignup);
                       }
-                      console.log(request);
                     }}
                   >
                     Signup
@@ -158,7 +156,6 @@ const Login = () => {
                   <GoogleBtn
                     onClick={async () => {
                       var request = await handleGoogleLogin();
-                      console.log(request);
                       if (request && request.status == 200) {
                         setAuthState(request.auth);
                         sessionStorage.setItem("authStatus", true);

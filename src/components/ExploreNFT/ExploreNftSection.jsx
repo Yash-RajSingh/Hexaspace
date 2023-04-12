@@ -14,8 +14,9 @@ const ExploreNftSectionTitle = styled(PartnersTitle)`
 const ExploreNftWrapper = styled.div`
   display: flex;
   margin-top: 3%;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
+  gap: 3%;
 `;
 const ExploreButton = styled.button`
   background: transparent;
@@ -29,6 +30,7 @@ const ExploreButton = styled.button`
   font-weight: 600;
   letter-spacing: 2px;
   transition: all 500ms;
+  cursor: pointer;
   text-align: center;
   &:hover {
     background: var(--light-orange);
@@ -45,8 +47,8 @@ const ExploreNftSection = () => {
         <ExploreNftWrapper>
           {nftCollection &&
             nftCollection
-              .slice(10, 20)
-              .map((element, index) => <NftCard props={{ element, index }} />)}
+              .slice(10, 18)
+              .map((element, index) => <NftCard props={{ element, index }} key={"nftCard"+index}/>)}
         </ExploreNftWrapper>
         <ExploreButton onClick={() => navigate("/explore")}>
           Explore

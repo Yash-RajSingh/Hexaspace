@@ -40,7 +40,6 @@ const handleNFTUpload = async (name, file, currency, price, creatorId, creatorNa
   };
   try {
     const AddNftRecord = await addDoc(NftCollectionRef, NftDoc)
-    console.log(AddNftRecord)
     return AddNftRecord
   } catch (err){
     alert("Error uploading Nft", err)

@@ -34,7 +34,7 @@ const Header = () => {
     if (window.location.href.includes("/login")) {
       setShowHeader(false);
     }
-    setIsLoggedIn(auth?.currentUser?.photoURL || getCookies({ name: "userPhoto" }));
+    setIsLoggedIn(auth?.currentUser?.displayName || getCookies({ name: "userName" }));
   }, [window.location.href]);
   return (
     <>
@@ -56,7 +56,7 @@ const Header = () => {
             {isLoggedIn ? (
               <HeaderProfileContainer>
                 <ProfileImage
-                  src={`${isLoggedIn}` || ProfileLogo}
+                  src={getCookies({ name: "userPhoto" }) === null ? ProfileLogo : getCookies({name: "userPhoto"})}
                   onClick={() => setShowOptions(!showOptions)}
                 />
                 <PopUp style={{ display: showOptions ? "" : "none" }}>
@@ -72,8 +72,8 @@ const Header = () => {
                         deleteCookie({ name: "userEmail" });
                         deleteCookie({ name: "userPhoto" });
                         setAuthState(false);
-                        setIsLoggedIn(false)
-                        navigate('/')
+                        setIsLoggedIn(false);
+                        navigate("/");
                       }}
                     >
                       Logout

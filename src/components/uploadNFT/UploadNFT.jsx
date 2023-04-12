@@ -24,6 +24,7 @@ import Draw from "../../assets/draw.png";
 import Upload2 from "../../assets/upload2.png";
 import { useContext } from "react";
 import { AuthContext, UpdateContext } from "../../context/context";
+import UpdateArtist from "../../hooks/updateArtist";
 
 const UploadNFT = () => {
   const { authState, setAuthState } = useContext(AuthContext);
@@ -93,6 +94,7 @@ const UploadNFT = () => {
                       PriceRef.current.value = "";
                       FileRef.current.value = "";
                       setImage(null);
+                      UpdateArtist(authState.docId)
                       setUpdate(!update);
                     })
                     .catch((err) => {

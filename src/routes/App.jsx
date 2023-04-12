@@ -11,6 +11,8 @@ import LoginPage from "./LoginPage/LoginPage";
 import UploadNFTPage from "./UploadNFTPage/UploadNFTPage";
 import "swiper/swiper.css";
 import ExplorePage from "./ExplorePage/ExplorePage";
+import ArtistDetailPage from "./ArtistDetailPage/ArtistDetailPage";
+import ExploreArtistsPage from "./ExploreArtistsPage/ExploreArtistsPage";
 const App = () => {
   const [authState, setAuthState] = useState(false);
   const [update, setUpdate] = useState(false);
@@ -27,6 +29,8 @@ const App = () => {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/sell" element={<UploadNFTPage />} />
                 <Route path="/explore" element={<ExplorePage />} />
+                <Route path="artists" element={<ExploreArtistsPage />}/>
+                <Route path="/artist-detail/:uid" element={<ArtistDetailPage />} />
               </Routes>
             </Router>
           </NftCollectionContext.Provider>
