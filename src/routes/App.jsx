@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  ArtistsDataContext,
   AuthContext,
   NftCollectionContext,
   UpdateContext,
@@ -17,22 +18,30 @@ const App = () => {
   const [authState, setAuthState] = useState(false);
   const [update, setUpdate] = useState(false);
   const [nftCollection, setNftCollection] = useState(false);
+  const [artistData, setArtistData] = useState(false);
   return (
     <>
       <GlobalStyles />
       <UpdateContext.Provider value={{ update, setUpdate }}>
         <AuthContext.Provider value={{ authState, setAuthState }}>
-          <NftCollectionContext.Provider value={{ nftCollection, setNftCollection }}>
-            <Router>
-              <Routes>
-                <Route exact path="/" element={<HomePage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/sell" element={<UploadNFTPage />} />
-                <Route path="/explore" element={<ExplorePage />} />
-                <Route path="artists" element={<ExploreArtistsPage />}/>
-                <Route path="/artist-detail/:uid" element={<ArtistDetailPage />} />
-              </Routes>
-            </Router>
+          <NftCollectionContext.Provider
+            value={{ nftCollection, setNftCollection }}
+          >
+            <ArtistsDataContext.Provider value={{ artistData, setArtistData }}>
+              <Router>
+                <Routes>
+                  <Route exact path="/" element={<HomePage />} />
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/sell" element={<UploadNFTPage />} />
+                  <Route path="/explore" element={<ExplorePage />} />
+                  <Route path="artists" element={<ExploreArtistsPage />} />
+                  <Route
+                    path="/artist-detail/:uid"
+                    element={<ArtistDetailPage />}
+                  />
+                </Routes>
+              </Router>
+            </ArtistsDataContext.Provider>
           </NftCollectionContext.Provider>
         </AuthContext.Provider>
       </UpdateContext.Provider>

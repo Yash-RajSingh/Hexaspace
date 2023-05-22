@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import NFT from "../../assets/NFT.jpeg";
+import NFT from "../../assets/NFT.webp";
 // import NFT from "../../assets/NFT2.jpg";
 
 export const LoginContainer = styled.div`

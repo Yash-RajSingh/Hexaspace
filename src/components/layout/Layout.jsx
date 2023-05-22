@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import Header from "../header/Header";
 import Preloader from "../preloader/Preloader";
+import Footer from "../Footer/Footer";
 const Pseudobody = styled.div`
-  width: 95%;
+  width: 92%;
   /* border: 1px solid white; */
   margin: 1% auto;
 `;
@@ -12,6 +13,7 @@ const Layout = (props) => {
       <Preloader />
       <Header />
       <Pseudobody>{props.children}</Pseudobody>
+      <Footer />
     </>
   );
 };

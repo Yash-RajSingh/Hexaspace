@@ -3,7 +3,8 @@ import styled from "styled-components";
 import getAllArtists from "../../../hooks/getAllArtists";
 import { PartnersTitle } from "../Partners/PartnersElements";
 import ArtistCard from "./ArtistCard";
-import { UpdateContext } from "../../../context/context";
+import { ArtistsDataContext, UpdateContext } from "../../../context/context";
+import { useNavigate } from "react-router-dom";
 
 const ArtistContainer = styled.div`
   /* border: 1px solid white; */
@@ -39,8 +40,9 @@ const ExploreButton = styled.div`
   }
 `
 const ArtistSection = () => {
-  const [artistData, setArtistData] = useState(false)
+  const { artistData, setArtistData } = useContext(ArtistsDataContext);
   const {update, setUpdate} = useContext(UpdateContext)
+  const navigate = useNavigate();
   useEffect(()=>{
     (async () => {
       const Data = await getAllArtists();
@@ -57,7 +59,9 @@ const ArtistSection = () => {
       <ArtistWrapper>
         {artistData && artistData.slice(0,4).map((element, index)=> <ArtistCard data={element} key={"artist"+index}/>)}
       </ArtistWrapper>
-      <ExploreButton>Explore</ExploreButton>
+      <ExploreButton onClick={(e)=>{
+        navigate('/artists')
+      }}>Explore</ExploreButton>
     </ArtistContainer>
     </>
    );

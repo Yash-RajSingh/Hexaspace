@@ -20,8 +20,8 @@ import {
   SubmitButton,
   ButtonWrapper,
 } from "./UploadNFTElements";
-import Draw from "../../assets/draw.png";
-import Upload2 from "../../assets/upload2.png";
+import Draw from "../../assets/draw.webp";
+import Upload2 from "../../assets/upload2.webp";
 import { useContext } from "react";
 import { AuthContext, UpdateContext } from "../../context/context";
 import UpdateArtist from "../../hooks/updateArtist";

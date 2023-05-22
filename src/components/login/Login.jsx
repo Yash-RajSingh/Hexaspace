@@ -17,10 +17,10 @@ import {
   SeparatorWrapper,
   SubLoginWrapper,
 } from "./LoginElements";
-import Google from "../../assets/google.png";
+import Google from "../../assets/google.webp";
 import { Button, Spacer } from "../common/common";
 import { useState } from "react";
-import Back from "../../assets/up.png";
+import Back from "../../assets/up.webp";
 import { useNavigate } from "react-router-dom";
 import { handleGoogleLogin } from "../../hooks/firebaseAuthenticationHooks";
 import { useRef } from "react";

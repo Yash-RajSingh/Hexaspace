@@ -5,6 +5,7 @@ import Slider from "../../components/landing/Slider/Slider";
 import Layout from "../../components/layout/Layout";
 import ExploreNftSection from "../../components/ExploreNFT/ExploreNftSection";
 import ArtistSection from "../../components/landing/Artist/ArtistSection";
+import Community from "../../components/landing/Community";
 
 const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage = () => {
         <Slider />
         <ExploreNftSection />
         <ArtistSection />
+        <Community />
       </Layout>
     </>
   );

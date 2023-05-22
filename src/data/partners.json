@@ -1,26 +1,26 @@
 [
   {
     "name": "Carver",
-    "src": "./partners/carver.png"
+    "src": "./partners/carver.webp"
   },
   {
     "name": "Titan",
-    "src": "./partners/titan.png"
+    "src": "./partners/titan.webp"
   },
   {
-    "name": "trex",
-    "src": "./partners/trex.png"
+    "name": "Trex",
+    "src": "./partners/trex.webp"
   },
   {
     "name": "Coinbase",
-    "src": "./partners/coin.png"
+    "src": "./partners/coin.webp"
   },
   {
     "name": "Trust Wallet",
-    "src": "./partners/wallet.png"
+    "src": "./partners/wallet.webp"
   },
   {
     "name": "Open Sea",
-    "src": "./partners/opensea.png"
+    "src": "./partners/opensea.webp"
   }
 ]

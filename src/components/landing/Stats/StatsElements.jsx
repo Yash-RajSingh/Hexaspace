@@ -16,7 +16,7 @@ export const StatsInfoWrapper = styled.div`
   justify-content: space-evenly;
 `
 export const Button1 = styled.button`
-  clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+  /* clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%); */
   padding: 0.75rem 3rem 0.75rem 2rem;
   background: rgb(255, 81, 0);
   color: var(--white);
@@ -32,12 +32,12 @@ export const Button1 = styled.button`
     rgba(255, 58, 0, 1) 52%
   );
   &:hover {
-    box-shadow:50px 50px 50px black;
+    box-shadow: 2px 2px 10px black;
   }
   /* border-radius: 10px 250px 10px 10px; */
 `;
 export const Button2 = styled.button`
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 25% 100%);
+  /* clip-path: polygon(0 0, 100% 0, 100% 100%, 25% 100%); */
   padding: 0.75rem 2rem 0.75rem 3rem;
   /* width: 20rem; */
   background-color: transparent;
@@ -49,10 +49,10 @@ export const Button2 = styled.button`
   letter-spacing: 1px;
   font-size: 1.125rem;
   border: 0.5px solid #ffffff65;
-  margin-left: -25px;
+  margin-left: 3%;
   /* border-radius: 10px 10px 10px 250px; */
   &:hover {
-    box-shadow: 20px 10px 10px black;
+    box-shadow: 2px 2px 10px black;
   }
 `;
 

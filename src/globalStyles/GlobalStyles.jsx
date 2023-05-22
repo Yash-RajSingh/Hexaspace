@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import StarsImage from "../assets/stars.png";
+import StarsImage from "../assets/stars.webp";
 
 const GlobalStyles = createGlobalStyle`
   html{
@@ -33,6 +33,15 @@ const GlobalStyles = createGlobalStyle`
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--light-orange);
+}
+.slide-in {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+}
+.hover{
+  &:hover{
+    cursor: pointer;
+  }
 }
 `;
 

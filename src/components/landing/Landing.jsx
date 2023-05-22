@@ -7,7 +7,7 @@ import {
   OrangeText,
   LandingInfoText,
 } from "./LandingElements";
-import MoonImage from "../../assets/planet.png";
+import MoonImage from "../../assets/planet.webp";
 import { useEffect, useContext } from "react";
 import { NftCollectionContext, UpdateContext } from "../../context/context";
 import getNFTs from "../../hooks/getNFTs";

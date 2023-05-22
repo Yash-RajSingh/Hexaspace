@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ProfileLogo from "../../../assets/profile.png";
+import ProfileLogo from "../../../assets/profile.webp";
 import { Button } from "../../common/common";
 import { useNavigate } from "react-router-dom";
 const ArtistCardBody = styled.div`
@@ -60,7 +60,7 @@ const ArtistCard = ({ data }) => {
         <SeeMoreButton color size={"90%"} onClick={()=>{
           navigate(`/artist-detail/${docId}`);
         }}>
-          Explore artworks
+          See artworks
         </SeeMoreButton>
       </ArtistCardBody>
     </>

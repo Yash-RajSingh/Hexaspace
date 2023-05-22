@@ -17,7 +17,7 @@ const ExploreNft = () => {
   }, []);
   return (
     <>
-      <ExploreNFtContainer>
+      <ExploreNFtContainer >
         {nftCollection &&
           nftCollection.map((element, index) => (
             <NftCard props={{ element, index }} />

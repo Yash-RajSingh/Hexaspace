@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { InputField, InputLabel } from "../login/LoginElements";
-import NFT from "../../assets/NFT4.png";
+import NFT from "../../assets/NFT4.webp";
 import { Button } from "../common/common";
 
 export const UploadNFTContainer = styled.div`

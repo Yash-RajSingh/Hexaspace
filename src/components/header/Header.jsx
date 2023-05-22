@@ -13,8 +13,8 @@ import {
   SubHeaderContainer,
 } from "./HeaderElements";
 import { Button } from "../common/common";
-import HexaLogo from "../../assets/logo.png";
-import ProfileLogo from "../../assets/profile.png";
+import HexaLogo from "../../assets/logo.webp";
+import ProfileLogo from "../../assets/profile.webp";
 import { useContext } from "react";
 import { AuthContext } from "../../context/context";
 import { useNavigate } from "react-router-dom";
