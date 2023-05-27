@@ -7,11 +7,11 @@ import {
   PartnersTitle,
 } from "./PartnersElements";
 
-const PartnerCard = ({data}) => {
-  const {src, name} = data;
+const PartnerCard = ({ data }) => {
+  const { src, name } = data;
   return (
     <>
-      <PartnerItem >
+      <PartnerItem>
         <PartnerIcon src={src} />
         <PartnerName>{name}</PartnerName>
       </PartnerItem>
@@ -25,7 +25,7 @@ const Partners = () => {
       <PartnersTitle>Our Partners</PartnersTitle>
       <PartnerContainer>
         {PartnersData.map((element, index) => (
-          <PartnerCard data={element} key={"partner"+index}/>
+          <PartnerCard data={element} key={"partner" + index} />
         ))}
       </PartnerContainer>
     </>

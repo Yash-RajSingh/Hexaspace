@@ -107,17 +107,17 @@ export const PopupOptions = styled.p`
   text-align: left;
   color: #6e6e6ed0;
   /* color: var(--light-orange); */
-  font-family: 'Joan';
+  font-family: "Joan";
   font-weight: 600;
   letter-spacing: 2px;
   transition: all 500ms;
   border-radius: 5px;
   cursor: pointer;
-  &:hover{
+  &:hover {
     background: #cbcbcbd0;
   }
 `;
 
 export const PopUp = styled.div`
   z-index: 2;
-`
+`;

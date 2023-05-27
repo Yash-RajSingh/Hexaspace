@@ -28,7 +28,8 @@ import UpdateArtist from "../../hooks/updateArtist";
 import { getCookies } from "../../hooks/cookies";
 
 const UploadNFT = () => {
-  const { authState, setAuthState } = useContext(AuthContext) || JSON.parse(getCookies({name:"authState"}));
+  const { authState, setAuthState } =
+    useContext(AuthContext) || JSON.parse(getCookies({ name: "authState" }));
   const { update, setUpdate } = useContext(UpdateContext);
   const FileRef = useRef();
   const FileNameRef = useRef();
@@ -95,7 +96,7 @@ const UploadNFT = () => {
                       PriceRef.current.value = "";
                       FileRef.current.value = "";
                       setImage(null);
-                      UpdateArtist(authState.docId)
+                      UpdateArtist(authState.docId);
                       setUpdate(!update);
                     })
                     .catch((err) => {

@@ -8,7 +8,7 @@ export const NftCardBody = styled.div`
   background-repeat: no-repeat;
   min-height: 20rem;
   width: 15rem;
-  margin-top: 2%;
+  margin-top: 3%;
   border: 3px solid rgba(0, 0, 0, 0.5);
   border-radius: 1rem 1rem 5px 5px;
   display: flex;

@@ -37,12 +37,12 @@ export const LandingInfoText = styled.p`
   font-size: 1.5rem;
   line-height: 2;
   margin-top: 5%;
-  font-family: 'Joan';
+  font-family: "Joan";
   letter-spacing: 0.5px;
-`
+`;
 export const OrangeText = styled.span`
   color: var(--dark-orange);
-`
+`;
 export const LandingMoonImage = styled.img`
   width: ${(props) => (props.bigger ? "80%" : "35%")};
   transform: rotate(${(props) => (props.bigger ? "-25deg" : "30deg")});

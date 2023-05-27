@@ -40,7 +40,7 @@ export const NftName = styled.p`
   line-height: 1.2;
   letter-spacing: 1px;
   font-family: "Tilt Warp";
-  text-align:center;
+  text-align: center;
 `;
 
 export const NftSubDetail = styled.div`

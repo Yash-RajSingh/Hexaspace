@@ -13,6 +13,7 @@ const GlobalStyles = createGlobalStyle`
    background: rgb(0,0,0);
    background: linear-gradient(221deg, rgba(0,0,0,1) 0%, rgba(66,15,0,1) 52%, rgba(0,0,0,1) 200%) fixed, url(${StarsImage});
    background-blend-mode: overlay;
+   scroll-behavior: smooth;
   }
   *{
     padding: 0;

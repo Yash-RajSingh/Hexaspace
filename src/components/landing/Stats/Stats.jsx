@@ -1,4 +1,13 @@
-import { Button1, Button2, ButtonContainer, Count, CountLabel, StatsContainer, StatsInfoSubWrapper, StatsInfoWrapper } from "./StatsElements";
+import {
+  Button1,
+  Button2,
+  ButtonContainer,
+  Count,
+  CountLabel,
+  StatsContainer,
+  StatsInfoSubWrapper,
+  StatsInfoWrapper,
+} from "./StatsElements";
 
 const Stats = () => {
   return (
@@ -18,13 +27,13 @@ const Stats = () => {
             <CountLabel>Collections</CountLabel>
           </StatsInfoSubWrapper>
           <StatsInfoSubWrapper>
-            <Count>43+</Count> 
+            <Count>43+</Count>
             <CountLabel>Artists</CountLabel>
           </StatsInfoSubWrapper>
         </StatsInfoWrapper>
       </StatsContainer>
     </>
   );
-}
- 
+};
+
 export default Stats;

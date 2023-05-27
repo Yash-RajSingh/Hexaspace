@@ -10,18 +10,18 @@ const ArtistContainer = styled.div`
   /* border: 1px solid white; */
   margin-top: 10%;
   padding: 0 2rem 2rem;
-`
+`;
 const ArtistHeading = styled(PartnersTitle)`
   margin-top: 0;
-`
+`;
 const ArtistWrapper = styled.div`
   display: flex;
   justify-content: center;
   gap: 5%;
   margin-top: 3%;
-`
+`;
 const ExploreButton = styled.div`
- background: transparent;
+  background: transparent;
   font-size: 1.5rem;
   color: var(--white);
   border: 1px solid white;
@@ -38,33 +38,42 @@ const ExploreButton = styled.div`
   &:hover {
     background: var(--light-orange);
   }
-`
+`;
 const ArtistSection = () => {
   const { artistData, setArtistData } = useContext(ArtistsDataContext);
-  const {update, setUpdate} = useContext(UpdateContext)
+  const { update, setUpdate } = useContext(UpdateContext);
   const navigate = useNavigate();
-  useEffect(()=>{
+  useEffect(() => {
     (async () => {
       const Data = await getAllArtists();
-      const ArtistData = Data.filter((item) =>{
-        return item.isArtist === true
-      })
-      setArtistData(ArtistData)
+      const ArtistData = Data.filter((item) => {
+        return item.isArtist === true;
+      });
+      setArtistData(ArtistData);
     })();
-  },[update])
-  return ( 
+  }, [update]);
+  return (
     <>
-    <ArtistContainer>
-      <ArtistHeading>Top Artists</ArtistHeading>
-      <ArtistWrapper>
-        {artistData && artistData.slice(0,4).map((element, index)=> <ArtistCard data={element} key={"artist"+index}/>)}
-      </ArtistWrapper>
-      <ExploreButton onClick={(e)=>{
-        navigate('/artists')
-      }}>Explore</ExploreButton>
-    </ArtistContainer>
+      <ArtistContainer>
+        <ArtistHeading>Top Artists</ArtistHeading>
+        <ArtistWrapper>
+          {artistData &&
+            artistData
+              .slice(0, 4)
+              .map((element, index) => (
+                <ArtistCard data={element} key={"artist" + index} />
+              ))}
+        </ArtistWrapper>
+        <ExploreButton
+          onClick={(e) => {
+            navigate("/artists");
+          }}
+        >
+          Explore
+        </ExploreButton>
+      </ArtistContainer>
     </>
-   );
-}
- 
+  );
+};
+
 export default ArtistSection;

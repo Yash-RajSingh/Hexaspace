@@ -10,21 +10,21 @@ export const FooterWrapper = styled.p`
   width: 90%;
   margin: 0 auto;
   padding: 1.5rem 0 0.5rem;
-`
+`;
 
 export const FooterLogo = styled.img`
   width: 3rem;
-`
+`;
 export const FooterHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`
+`;
 export const FooterHeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 5%;
-`
+`;
 
 export const FooterTitle = styled.p`
   color: var(--light-orange);
@@ -37,7 +37,7 @@ export const FooterHeader = styled.p`
   color: var(--white);
   font-size: 1.5rem;
   line-height: 1.5;
-  font-family: 'Joan';
+  font-family: "Poppins";
   white-space: nowrap;
 `;
 
@@ -58,27 +58,27 @@ export const FooterBottom = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 3%;
-`
+`;
 
 export const FooterSubBottom = styled.div`
   /* border: 1px solid yellow; */
   width: 30%;
-`
+`;
 
 export const Description = styled.p`
   color: grey;
   font-size: 1.25rem;
-  font-family: 'Joan';
+  font-family: "Poppins";
   margin-top: 2%;
   line-height: 1.5;
-`
+`;
 
 export const Copyright = styled.p`
   color: var(--white);
   font-size: 1rem;
-  font-family: 'Joan';
+  font-family: "Poppins";
   letter-spacing: 1px;
   line-height: 1.5;
   text-align: center;
   margin-top: 3%;
-`
+`;

@@ -1,14 +1,18 @@
 import ExploreArtists from "../../components/landing/Artist/ExploreArtists";
 import Layout from "../../components/layout/Layout";
+import { useEffect } from "react";
 
 const ExploreArtistsPage = () => {
-  return ( 
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+  return (
     <>
-    <Layout>
-      <ExploreArtists />
-    </Layout>
+      <Layout>
+        <ExploreArtists />
+      </Layout>
     </>
-   );
-}
- 
+  );
+};
+
 export default ExploreArtistsPage;

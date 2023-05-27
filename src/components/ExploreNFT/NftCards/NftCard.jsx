@@ -1,7 +1,13 @@
-import { BuyButton, NftCardBody, NftCardName, NftPrice, NftPriceContainer } from "./NftCardElements";
+import {
+  BuyButton,
+  NftCardBody,
+  NftCardName,
+  NftPrice,
+  NftPriceContainer,
+} from "./NftCardElements";
 
-const NftCard = ({props}) => {
-  const {element, index} = props;
+const NftCard = ({ props }) => {
+  const { element, index } = props;
   return (
     <>
       <NftCardBody bg={element.ImageURL} className={"card" + index}>
@@ -15,6 +21,6 @@ const NftCard = ({props}) => {
       </NftCardBody>
     </>
   );
-}
- 
+};
+
 export default NftCard;

@@ -1,4 +1,7 @@
-import { handleLoginWithEmail, handleSignUpWithEmail } from "./firebaseAuthenticationHooks";
+import {
+  handleLoginWithEmail,
+  handleSignUpWithEmail,
+} from "./firebaseAuthenticationHooks";
 
 export const handleSigninValidation = async (
   username,

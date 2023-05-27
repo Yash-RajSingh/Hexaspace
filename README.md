@@ -1,8 +1,9 @@
 # Hexaspace
+
 Prototype NFT marketplace
 
-
 #### Directory structure
+
 ```
 ├───assets
 ├───components

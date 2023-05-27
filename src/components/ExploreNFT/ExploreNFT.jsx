@@ -4,6 +4,7 @@ import NftCard from "./NftCards/NftCard";
 import { ExploreNFtContainer } from "./ExploreNFTElements";
 import { useEffect } from "react";
 import getNFTs from "../../hooks/getNFTs";
+import AnimationComponent from "../../animation/animation";
 const ExploreNft = () => {
   const { nftCollection, setNftCollection } = useContext(NftCollectionContext);
   useEffect(() => {
@@ -17,10 +18,12 @@ const ExploreNft = () => {
   }, []);
   return (
     <>
-      <ExploreNFtContainer >
+      <ExploreNFtContainer>
         {nftCollection &&
           nftCollection.map((element, index) => (
-            <NftCard props={{ element, index }} />
+            <AnimationComponent>
+              <NftCard props={{ element, index }} />
+            </AnimationComponent>
           ))}
       </ExploreNFtContainer>
     </>

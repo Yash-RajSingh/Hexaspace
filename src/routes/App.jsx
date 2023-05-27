@@ -16,10 +16,11 @@ import ArtistDetailPage from "./ArtistDetailPage/ArtistDetailPage";
 import ExploreArtistsPage from "./ExploreArtistsPage/ExploreArtistsPage";
 import { createCookie, deleteCookie, getCookies } from "../hooks/cookies";
 import { auth } from "../firebaseUtils";
-import '../firebaseUtils/'
+import "../firebaseUtils/";
 
 const App = () => {
-  const [authState, setAuthState] = useState(false) || JSON.parse(getCookies({name:"authState"}));
+  const [authState, setAuthState] =
+    useState(false) || JSON.parse(getCookies({ name: "authState" }));
   const [update, setUpdate] = useState(false);
   const [nftCollection, setNftCollection] = useState(false);
   const [artistData, setArtistData] = useState(false);

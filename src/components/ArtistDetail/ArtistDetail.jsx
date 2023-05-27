@@ -16,8 +16,8 @@ import {
 } from "./ArtistDetailElements";
 import getArtistDetail from "../../hooks/getArtistDetail";
 import NftCard from "../ExploreNFT/NftCards/NftCard";
-import EmailIcon from '../../assets/emailIcon2.png'
-import ProfilePhoto from '../../assets/profile.webp'
+import EmailIcon from "../../assets/emailIcon2.png";
+import ProfilePhoto from "../../assets/profile.webp";
 const ArtistDetail = () => {
   const { uid } = useParams();
   const [artistNFTs, setArtistNFTs] = useState(false);
@@ -45,12 +45,28 @@ const ArtistDetail = () => {
           <ProfileImage src={artistDetail.profilePhoto || ProfilePhoto} />
           <ArtistInfoContentWrapper>
             <ArtistName>{artistDetail.name}</ArtistName>
-            <ArtistBio>{artistDetail?.bio}</ArtistBio>
-            <Icon
-              src={EmailIcon}
-              onClick={() => (window.location = `mailto:${artistDetail.email}`)}
-            />
-            <ArtworkCount>{artistDetail.artworkCount}+ artworks</ArtworkCount>
+            <ArtistBio>
+              {artistDetail?.bio || "The artist has not added a bio yet."}
+            </ArtistBio>
+            <div
+              style={{
+                display: "flex",
+                gap: "5%",
+                marginTop: "2%",
+                alignItems: "center",
+              }}
+            >
+              <ArtworkCount>
+                Contact :
+                <Icon
+                  src={EmailIcon}
+                  onClick={() =>
+                    (window.location = `mailto:${artistDetail.email}`)
+                  }
+                />
+              </ArtworkCount>
+              <ArtworkCount>{artistDetail.artworkCount}+ artworks</ArtworkCount>
+            </div>
           </ArtistInfoContentWrapper>
         </ArtistInfoContainer>
         <ArtistDetailHeading>
@@ -62,6 +78,9 @@ const ArtistDetail = () => {
               <NftCard props={{ element }} key={`NFTcardNo ` + index} />
             ))}
         </ArtistNftWrapper>
+        <ArtistName style={{ margin: "2% auto 0", width: "max-content" }}>
+          That's it for now!
+        </ArtistName>
       </ArtistDetailContainer>
     </>
   );

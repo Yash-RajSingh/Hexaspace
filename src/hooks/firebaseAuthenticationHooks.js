@@ -21,7 +21,10 @@ export const handleGoogleLogin = async () => {
     const request = await signInWithPopup(auth, GoogleProvider);
     const user = request.user;
     const firebaseQuery = query(
-      collection(firebaseDatabase, `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`),
+      collection(
+        firebaseDatabase,
+        `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`
+      ),
       where("uid", "==", user.uid)
     );
     const queryResponse = await getDocs(firebaseQuery);
@@ -33,12 +36,22 @@ export const handleGoogleLogin = async () => {
         auth.currentUser.photoURL || getCookies({ name: "userPhoto" }),
       walletAmount: 0,
       isArtist: false,
-      artworkCount: 0
+      artworkCount: 0,
     };
     if (queryResponse.docs.length === 0) {
-      const res = await addDoc(collection(firebaseDatabase, `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`), userData);
+      const res = await addDoc(
+        collection(
+          firebaseDatabase,
+          `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`
+        ),
+        userData
+      );
       const documentId = res.id;
-      const docRef = await doc(firebaseDatabase, `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`, documentId);
+      const docRef = await doc(
+        firebaseDatabase,
+        `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`,
+        documentId
+      );
       await updateDoc(docRef, {
         docId: documentId,
       });
@@ -88,11 +101,18 @@ export const handleSignUpWithEmail = async (username, email, password) => {
     };
     alert("Successfully Signed Up!");
     const queryResponse = await addDoc(
-      collection(firebaseDatabase, `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`),
+      collection(
+        firebaseDatabase,
+        `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`
+      ),
       userData
     );
     const documentId = queryResponse.id;
-    const docRef = await doc(firebaseDatabase, `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`, documentId);
+    const docRef = await doc(
+      firebaseDatabase,
+      `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`,
+      documentId
+    );
     await updateDoc(docRef, {
       docId: documentId,
     });
@@ -120,7 +140,10 @@ export const handleLoginWithEmail = async (email, password) => {
     // console.log(request.user);
     const user = request.user;
     const firebaseQuery = query(
-      collection(firebaseDatabase, `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`),
+      collection(
+        firebaseDatabase,
+        `${import.meta.env.VITE_APP_FB_USERCOLLECTION_NAME}`
+      ),
       where("uid", "==", user.uid)
     );
     const queryResponse = await getDocs(firebaseQuery);

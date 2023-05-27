@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import DiscorrdLogo from '../../assets/discordIcon.webp'
+import DiscorrdLogo from "../../assets/discordIcon.webp";
 import { Button } from "../common/common";
 const CommunityContainer = styled.div`
   /* border: 1px solid white; */
@@ -7,7 +7,7 @@ const CommunityContainer = styled.div`
   justify-content: space-evenly;
   gap: 10%;
   margin-top: 10%;
-`
+`;
 const CommunitySubWrapper = styled.div`
   /* border: 1px solid yellow; */
   background-color: var(--light-orange);
@@ -18,11 +18,11 @@ const CommunitySubWrapper = styled.div`
   align-items: center;
 
   padding: 2rem;
-`
+`;
 const Discord = styled.img`
   width: 60%;
   margin: auto;
-`
+`;
 const CommunityInfoWrapper = styled.div`
   width: 30%;
   /* border: 1px solid white; */
@@ -30,8 +30,8 @@ const CommunityInfoWrapper = styled.div`
 const Title = styled.p`
   font-size: 1.5rem;
   color: var(--white);
-  font-family: 'Tilt Warp';
-`
+  font-family: "Tilt Warp";
+`;
 const Description = styled.p`
   font-family: "Joan";
   letter-spacing: 1px;
@@ -66,6 +66,6 @@ const Community = () => {
       </CommunityContainer>
     </>
   );
-}
- 
+};
+
 export default Community;

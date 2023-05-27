@@ -25,7 +25,8 @@ import { deleteCookie, getCookies } from "../../hooks/cookies";
 import { logout } from "../../hooks/firebaseAuthenticationHooks";
 
 const Header = () => {
-  const { authState, setAuthState } = useContext(AuthContext) || JSON.parse(getCookies({name:"authState"}));
+  const { authState, setAuthState } =
+    useContext(AuthContext) || JSON.parse(getCookies({ name: "authState" }));
   const [showHeader, setShowHeader] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
@@ -34,7 +35,9 @@ const Header = () => {
     if (window.location.href.includes("/login")) {
       setShowHeader(false);
     }
-    setIsLoggedIn(auth?.currentUser?.displayName || getCookies({ name: "userName" }));
+    setIsLoggedIn(
+      auth?.currentUser?.displayName || getCookies({ name: "userName" })
+    );
   }, [window.location.href]);
   return (
     <>
@@ -56,7 +59,11 @@ const Header = () => {
             {isLoggedIn ? (
               <HeaderProfileContainer>
                 <ProfileImage
-                  src={getCookies({ name: "userPhoto" }) === null ? ProfileLogo : getCookies({name: "userPhoto"})}
+                  src={
+                    getCookies({ name: "userPhoto" }) === null
+                      ? ProfileLogo
+                      : getCookies({ name: "userPhoto" })
+                  }
                   onClick={() => setShowOptions(!showOptions)}
                 />
                 <PopUp style={{ display: showOptions ? "" : "none" }}>

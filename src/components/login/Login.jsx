@@ -32,7 +32,7 @@ import { useContext } from "react";
 import { AuthContext, UpdateContext } from "../../context/context";
 const Login = () => {
   const { authState, setAuthState } = useContext(AuthContext);
-  const {update, setUpdate} = useContext(UpdateContext);
+  const { update, setUpdate } = useContext(UpdateContext);
   const [showSignup, setShowSignup] = useState(true);
   let navigate = useNavigate();
   const signinUsernameRef = useRef();
@@ -83,9 +83,8 @@ const Login = () => {
                       );
                       if (request && request.status == 200) {
                         setAuthState(request.auth);
-                        setUpdate(!update)
+                        setUpdate(!update);
                         navigate("/");
-                        
                       }
                       // console.log(request);
                     }}
@@ -103,7 +102,7 @@ const Login = () => {
                     var request = await handleGoogleLogin();
                     if (request && request.status == 200) {
                       setAuthState(request.auth);
-                      setUpdate(!update)
+                      setUpdate(!update);
                       sessionStorage.setItem("authStatus", true);
                       navigate("/");
                     }
@@ -162,7 +161,7 @@ const Login = () => {
                       var request = await handleGoogleLogin();
                       if (request && request.status == 200) {
                         setAuthState(request.auth);
-                        setUpdate(!update)
+                        setUpdate(!update);
                         sessionStorage.setItem("authStatus", true);
                         navigate("/");
                       }

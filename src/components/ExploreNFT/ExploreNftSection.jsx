@@ -48,7 +48,9 @@ const ExploreNftSection = () => {
           {nftCollection &&
             nftCollection
               .slice(10, 18)
-              .map((element, index) => <NftCard props={{ element, index }} key={"nftCard"+index}/>)}
+              .map((element, index) => (
+                <NftCard props={{ element, index }} key={"nftCard" + index} />
+              ))}
         </ExploreNftWrapper>
         <ExploreButton onClick={() => navigate("/explore")}>
           Explore

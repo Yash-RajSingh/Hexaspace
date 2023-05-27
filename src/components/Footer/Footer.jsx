@@ -52,9 +52,7 @@ const Footer = () => {
               <Description className={"hover"}>Careers</Description>
             </FooterSubBottom>
           </FooterBottom>
-          <Copyright>
-            Copyrights 2023 • HexaSpace
-          </Copyright>
+          <Copyright>Copyrights 2023 • HexaSpace</Copyright>
         </FooterWrapper>
       </FooterContainer>
     </>

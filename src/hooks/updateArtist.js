@@ -1,4 +1,10 @@
-import { collection, doc, getDoc, increment, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  increment,
+  updateDoc,
+} from "firebase/firestore";
 import { firebaseDatabase } from "../firebaseUtils";
 
 const UpdateArtist = async (docId) => {
@@ -8,12 +14,12 @@ const UpdateArtist = async (docId) => {
     docId
   );
   const docItem = await getDoc(docRef);
-  const artworkCount = docItem.data().artworkCount
+  const artworkCount = docItem.data().artworkCount;
   await updateDoc(docRef, {
     isArtist: true,
-    artworkCount: artworkCount+1
+    artworkCount: artworkCount + 1,
   });
-  return "You're a creator now"
-}
- 
+  return "You're a creator now";
+};
+
 export default UpdateArtist;

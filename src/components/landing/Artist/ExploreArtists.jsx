@@ -15,14 +15,13 @@ const ExploreArtistTitle = styled(PartnersTitle)`
   text-align: left;
   margin-top: 3%;
   /* margin-left: 3%; */
-`
+`;
 const ExploreArtists = () => {
   const { artistData, setArtistData } = useContext(ArtistsDataContext);
   return (
     <>
       <ExploreArtistTitle>HexaSpace's talented artists</ExploreArtistTitle>
       <ExploreArtistWrapper>
-        {console.log(artistData)}
         {artistData &&
           artistData.map((element, index) => (
             <ArtistCard data={element} key={"artist" + index} />

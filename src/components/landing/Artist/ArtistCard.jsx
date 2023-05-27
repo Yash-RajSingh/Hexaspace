@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 const ArtistCardBody = styled.div`
   width: 14rem;
   border-radius: 1rem;
-  /* border: 1px solid blue; */
   backdrop-filter: blur(100px);
   background: #0000007a;
   padding: 1.5rem 0.5rem;
@@ -46,21 +45,24 @@ const SeeMoreButton = styled(Button)`
 `;
 const ArtistCard = ({ data }) => {
   const { profilePhoto, artworkCount, docId, name, uid } = data;
-  let navigate = useNavigate()
-  console.log("artistData", data)
+  let navigate = useNavigate();
   return (
     <>
       <ArtistCardBody>
-        <div style={{textAlign:"center"}}>
-        <ProfileImage src={profilePhoto || ProfileLogo} />
+        <div style={{ textAlign: "center" }}>
+          <ProfileImage src={profilePhoto || ProfileLogo} />
           <ArtistName>{name}</ArtistName>
           <ArtworkCount>
             {artworkCount} {"+ Artworks"}
           </ArtworkCount>
         </div>
-        <SeeMoreButton color size={"90%"} onClick={()=>{
-          navigate(`/artist-detail/${uid}`);
-        }}>
+        <SeeMoreButton
+          color
+          size={"90%"}
+          onClick={() => {
+            navigate(`/artist-detail/${uid}`);
+          }}
+        >
           See artworks
         </SeeMoreButton>
       </ArtistCardBody>

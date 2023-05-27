@@ -29,7 +29,6 @@ export const Button = styled.button`
   transition: all 400ms;
 `;
 
-
 export const Spacer = styled.div`
   margin-top: ${(props) => props.top};
 `;
