@@ -53,12 +53,7 @@ const Footer = () => {
             </FooterSubBottom>
           </FooterBottom>
           <Copyright>
-            Copyrights 2023 • HexaSpace | Design credits -{" "}
-            <span
-              onClick={() => window.open("https://dribbble.com/hannaneh_uiux")}
-            >
-              Hana Akhoondi
-            </span>
+            Copyrights 2023 • HexaSpace
           </Copyright>
         </FooterWrapper>
       </FooterContainer>

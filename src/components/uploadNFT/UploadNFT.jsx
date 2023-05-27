@@ -25,9 +25,10 @@ import Upload2 from "../../assets/upload2.webp";
 import { useContext } from "react";
 import { AuthContext, UpdateContext } from "../../context/context";
 import UpdateArtist from "../../hooks/updateArtist";
+import { getCookies } from "../../hooks/cookies";
 
 const UploadNFT = () => {
-  const { authState, setAuthState } = useContext(AuthContext);
+  const { authState, setAuthState } = useContext(AuthContext) || JSON.parse(getCookies({name:"authState"}));
   const { update, setUpdate } = useContext(UpdateContext);
   const FileRef = useRef();
   const FileNameRef = useRef();

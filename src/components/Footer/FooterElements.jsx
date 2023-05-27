@@ -75,7 +75,8 @@ export const Description = styled.p`
 
 export const Copyright = styled.p`
   color: var(--white);
-  font-size: 1.125rem;
+  font-size: 1rem;
+  font-family: 'Joan';
   letter-spacing: 1px;
   line-height: 1.5;
   text-align: center;

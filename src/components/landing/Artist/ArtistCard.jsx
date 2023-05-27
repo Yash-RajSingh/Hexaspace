@@ -45,8 +45,9 @@ const SeeMoreButton = styled(Button)`
   margin-top: 10%;
 `;
 const ArtistCard = ({ data }) => {
-  const { profilePhoto, artworkCount, docId, name } = data;
+  const { profilePhoto, artworkCount, docId, name, uid } = data;
   let navigate = useNavigate()
+  console.log("artistData", data)
   return (
     <>
       <ArtistCardBody>
@@ -58,7 +59,7 @@ const ArtistCard = ({ data }) => {
           </ArtworkCount>
         </div>
         <SeeMoreButton color size={"90%"} onClick={()=>{
-          navigate(`/artist-detail/${docId}`);
+          navigate(`/artist-detail/${uid}`);
         }}>
           See artworks
         </SeeMoreButton>

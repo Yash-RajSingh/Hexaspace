@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArtistsDataContext,
   AuthContext,
@@ -14,11 +14,33 @@ import "swiper/swiper.css";
 import ExplorePage from "./ExplorePage/ExplorePage";
 import ArtistDetailPage from "./ArtistDetailPage/ArtistDetailPage";
 import ExploreArtistsPage from "./ExploreArtistsPage/ExploreArtistsPage";
+import { createCookie, deleteCookie, getCookies } from "../hooks/cookies";
+import { auth } from "../firebaseUtils";
+import '../firebaseUtils/'
+
 const App = () => {
-  const [authState, setAuthState] = useState(false);
+  const [authState, setAuthState] = useState(false) || JSON.parse(getCookies({name:"authState"}));
   const [update, setUpdate] = useState(false);
   const [nftCollection, setNftCollection] = useState(false);
   const [artistData, setArtistData] = useState(false);
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authState) => {
+      if (authState) {
+        setAuthState(authState);
+        createCookie({
+          name: "authState",
+          value: JSON.stringify(authState),
+          validDays: 7,
+        });
+      } else {
+        setAuthState(false);
+        deleteCookie({ name: "authState" });
+      }
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, [update]);
   return (
     <>
       <GlobalStyles />

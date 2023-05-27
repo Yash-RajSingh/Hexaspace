@@ -25,7 +25,7 @@ import { deleteCookie, getCookies } from "../../hooks/cookies";
 import { logout } from "../../hooks/firebaseAuthenticationHooks";
 
 const Header = () => {
-  const { authState, setAuthState } = useContext(AuthContext);
+  const { authState, setAuthState } = useContext(AuthContext) || JSON.parse(getCookies({name:"authState"}));
   const [showHeader, setShowHeader] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
